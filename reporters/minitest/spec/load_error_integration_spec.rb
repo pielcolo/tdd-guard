@@ -5,6 +5,7 @@ require "json"
 require "tmpdir"
 require "fileutils"
 require "open3"
+require "rbconfig"
 
 # Integration test that runs a real Ruby process end-to-end to verify that
 # the at_exit hook in lib/tdd_guard_minitest/autorun.rb captures load errors
@@ -24,7 +25,7 @@ RSpec.describe "load error integration" do
 
     env = { "TDD_GUARD_PROJECT_ROOT" => tmpdir }
     cmd = [
-      "bundle", "exec", "ruby",
+      RbConfig.ruby,
       "-I", repo_lib,
       "-rtdd_guard_minitest/autorun",
       "test/load_error_test.rb"
