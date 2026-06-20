@@ -1,5 +1,6 @@
 import { GuardManager } from '../guard/GuardManager'
 import { ValidationResult } from '../contracts/types/ValidationResult'
+import { defaultResult } from '../contracts/validationResults'
 
 export class UserPromptHandler {
   private readonly guardManager: GuardManager
@@ -48,7 +49,7 @@ export class UserPromptHandler {
   async getDisabledResult(): Promise<ValidationResult | undefined> {
     const isEnabled = await this.guardManager.isEnabled()
     if (!isEnabled) {
-      return { decision: undefined, reason: '' }
+      return defaultResult
     }
     return undefined
   }

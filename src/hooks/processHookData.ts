@@ -9,6 +9,7 @@ import { GuardManager } from '../guard/GuardManager'
 import { Storage } from '../storage/Storage'
 import { FileStorage } from '../storage/FileStorage'
 import { ValidationResult } from '../contracts/types/ValidationResult'
+import { defaultResult } from '../contracts/validationResults'
 import { Context } from '../contracts/types/Context'
 import { countTestDefinitions } from './testCounter'
 import {
@@ -26,11 +27,6 @@ export interface ProcessHookDataDeps {
   storage?: Storage
   validator?: (context: Context) => Promise<ValidationResult>
   userPromptHandler?: UserPromptHandler
-}
-
-export const defaultResult: ValidationResult = {
-  decision: undefined,
-  reason: '',
 }
 
 function extractFilePath(parsedData: unknown): string | null {
