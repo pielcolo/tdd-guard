@@ -1,6 +1,6 @@
 import { GuardManager } from '../guard/GuardManager'
 import { ValidationResult } from '../contracts/types/ValidationResult'
-import { defaultResult } from '../contracts/validationResults'
+import { defaultResult, stopSession } from '../contracts/validationResults'
 
 export class UserPromptHandler {
   private readonly guardManager: GuardManager
@@ -26,23 +26,14 @@ export class UserPromptHandler {
     switch (command) {
       case this.GUARD_COMMANDS.ON:
         await this.guardManager.enable()
-        return this.createBlockResult('TDD Guard enabled')
+        return stopSession('TDD Guard enabled')
       
       case this.GUARD_COMMANDS.OFF:
         await this.guardManager.disable()
-        return this.createBlockResult('TDD Guard disabled')
+        return stopSession('TDD Guard disabled')
       
       default:
         return undefined
-    }
-  }
-
-  private createBlockResult(message: string): ValidationResult {
-    return {
-      decision: undefined,
-      reason: message,
-      continue: false,
-      stopReason: message
     }
   }
 

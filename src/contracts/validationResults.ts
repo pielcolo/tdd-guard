@@ -11,3 +11,12 @@ export function block(reason: string): ValidationResult {
     reason,
   }
 }
+
+export function stopSession(message: string): ValidationResult {
+  return {
+    decision: undefined,
+    reason: message,
+    continue: false,
+    stopReason: message,
+  }
+}
