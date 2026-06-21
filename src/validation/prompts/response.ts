@@ -1,11 +1,11 @@
 export const RESPONSE = `## Your Response
 
 ### Format
-Respond with a JSON object:
+Respond with a JSON object. Include "reason" only when blocking:
 \`\`\`json
 {
   "decision": "block" | null,
-  "reason": "Actionable explanation when blocking, otherwise an empty string"
+  "reason": "Actionable explanation with next steps"
 }
 \`\`\`
 
