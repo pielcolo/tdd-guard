@@ -1,6 +1,6 @@
 import { Context } from '../contracts/types/Context'
 import { ValidationResult } from '../contracts/types/ValidationResult'
-import { IModelClient } from '../contracts/types/ModelClient'
+import { ModelClient } from '../contracts/types/ModelClient'
 import { describe, test, expect, vi, beforeEach } from 'vitest'
 import { validator } from './validator'
 import { generateDynamicContext } from './context/context'
@@ -263,10 +263,10 @@ This violates TDD principles as explained in the numbered list above.
     }
   ): Promise<{
     result: ValidationResult
-    mockModelClient: IModelClient
+    mockModelClient: ModelClient
     context: Context
   }> {
-    const mockModelClient: IModelClient = {
+    const mockModelClient: ModelClient = {
       ask:
         modelResponse instanceof Error
           ? vi.fn().mockRejectedValue(modelResponse)

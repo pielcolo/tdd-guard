@@ -1,7 +1,7 @@
 import { ValidationResult } from '../contracts/types/ValidationResult'
 import { block } from '../contracts/validationResults'
 import { Context } from '../contracts/types/Context'
-import { IModelClient } from '../contracts/types/ModelClient'
+import { ModelClient } from '../contracts/types/ModelClient'
 import { ClaudeCli } from './models/ClaudeCli'
 import { generateDynamicContext } from './context/context'
 
@@ -12,7 +12,7 @@ interface ModelResponseJson {
 
 export async function validator(
   context: Context,
-  modelClient: IModelClient = new ClaudeCli()
+  modelClient: ModelClient = new ClaudeCli()
 ): Promise<ValidationResult> {
   try {
     const prompt = generateDynamicContext(context)

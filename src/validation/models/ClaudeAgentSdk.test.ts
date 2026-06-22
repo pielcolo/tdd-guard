@@ -1,14 +1,14 @@
 import { describe, test, expect, vi, beforeEach } from 'vitest'
 import { ClaudeAgentSdk } from './ClaudeAgentSdk'
 import { Config } from '../../config/Config'
-import { IModelClient } from '../../contracts/types/ModelClient'
+import { ModelClient } from '../../contracts/types/ModelClient'
 import { query, type SDKResultMessage } from '@anthropic-ai/claude-agent-sdk'
 import { SYSTEM_PROMPT } from '../prompts/system-prompt'
 
 describe('ClaudeAgentSdk', () => {
   describe('constructor', () => {
-    test('implements the IModelClient interface', () => {
-      const client: IModelClient = new ClaudeAgentSdk()
+    test('implements the ModelClient interface', () => {
+      const client: ModelClient = new ClaudeAgentSdk()
       expect(client.ask).toBeDefined()
     })
 

@@ -1,9 +1,9 @@
 import { Config } from '../../config/Config'
 import { query, type Options } from '@anthropic-ai/claude-agent-sdk'
-import { IModelClient } from '../../contracts/types/ModelClient'
+import { ModelClient } from '../../contracts/types/ModelClient'
 import { SYSTEM_PROMPT } from '../prompts/system-prompt'
 
-export class ClaudeAgentSdk implements IModelClient {
+export class ClaudeAgentSdk implements ModelClient {
   constructor(
     private readonly config: Config = new Config(),
     private readonly queryFn: typeof query = query
